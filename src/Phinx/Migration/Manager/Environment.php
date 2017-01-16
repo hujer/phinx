@@ -31,7 +31,7 @@ namespace Phinx\Migration\Manager;
 use Phinx\Db\Adapter\SqlServerAdapter;
 use Symfony\Component\Console\Output\OutputInterface;
 use Phinx\Db\Adapter\AdapterInterface;
-use Phinx\Db\Adapter\MysqlAdapter;
+use Phinx\Db\Adapter\MysqlReconnectAdapter;
 use Phinx\Db\Adapter\PostgresAdapter;
 use Phinx\Db\Adapter\SQLiteAdapter;
 use Phinx\Db\Adapter\ProxyAdapter;
@@ -337,7 +337,7 @@ class Environment
     {
         return array(
             'mysql'     => function(Environment $env) {
-                return new MysqlAdapter($env->getOptions(), $env->getOutput());
+                return new MysqlReconnectAdapter($env->getOptions(), $env->getOutput());
             },
             'pgsql'     => function(Environment $env) {
                 return new PostgresAdapter($env->getOptions(), $env->getOutput());
